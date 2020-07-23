@@ -1,0 +1,46 @@
+import React, { useState, useEffect, memo } from 'react';
+import { Message } from '../../components';
+
+{{#if hasApi}}
+import api from '../../api';
+{{/if}}
+
+{{#if hasScss}}
+import './index.scss';
+{{/if}}
+
+const {{ properCase dir }} = memo(
+  function {{ properCase dir }} (props){
+
+
+    {{#if hasApi}}
+    useEffect(() => {
+      const {{ camelCase dir }}Api = async(data='') => {
+        try {
+
+          const { data, status, message } = await api('');
+
+          if (status === 1000) {
+            // do something
+          } else {
+            Message.error(message)
+          }
+        } catch (error) {
+
+        }
+      }
+      // {{ camelCase dir }}Api();
+    }, []);
+    {{/if}}
+
+
+    return (
+      <div{{#if hasScss}} className='{{snakeCase dir}}_box'{{/if}}>
+        {{ dir }}页面
+      </div>
+    )
+
+  }
+)
+
+export default {{ properCase dir }};

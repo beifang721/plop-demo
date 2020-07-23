@@ -1,0 +1,44 @@
+import React, { useState, useEffect, memo } from 'react';
+
+{{#if hasApi}}
+import api from '../../api';
+{{/if}}
+
+{{#if hasScss}}
+import './{{ properCase componentName }}.scss';
+{{/if}}
+
+const {{ properCase componentName }} = memo(
+  function {{ properCase componentName }} (props){
+
+    {{#if hasApi}}
+    useEffect(() => {
+      const {{ camelCase componentName }}Api = async(data='') => {
+        try {
+
+          const { data: { data: { result }, status, message } } = await api();
+
+          if (status === 1000) {
+
+          } else {
+
+          }
+        } catch (error) {
+
+        }
+      }
+      // {{ camelCase componentName }}Api();
+    }, [])
+    {{/if}}
+
+
+    return (
+      <div{{#if hasScss}} className='{{snakeCase componentName}}_box'{{/if}}>
+        {{ componentName }}组件
+      </div>
+    )
+
+  }
+)
+
+export default {{ properCase componentName }};

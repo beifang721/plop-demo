@@ -1,68 +1,76 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!--
+ * @Author: yqj
+ * @Date: 2020-07-22 20:33:15
+ * @LastEditTime: 2020-07-23 14:14:43
+ * @Description: 
+--> 
 
-## Available Scripts
+### 安装依赖
 
-In the project directory, you can run:
+```
+cnpm install 或 yarn add
+```
 
-### `yarn start`
+### 启动项目
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+npm start
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `yarn test`
+### plop
+---
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### 1.1 使用plop创建文件
+运行 `npm run plop`即可找到`plopfile.js`入口文件。
+```
+yarn plop 或 npm run plop
+```
+**plop命令参数**
+```
+// 执行指定配置
+plop 配置名称
 
-### `yarn build`
+// 执行指定配置并设置参数
+plop 配置名称 输入参数
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+// 执行 plopfile 文件
+--plopfile 文件路径
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+// 设置工作路径
+--cwd
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+// 帮助
+-h, --help
 
-### `yarn eject`
+// 全局初始化
+-i, --init
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+// 显示版本
+-v, --version
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### 1.2 入口文件`plopfile.js`说明
+在`plopfile.js` 配置了两种命令 <font color='#d453'>创建组件、创建页面</font>
+```
+// 引入命令的配置
+const { componentGenerator, pageGenerator } = require('./generator/index.js');
+module.exports = (plop)=>{
+  plop.setGenerator('创建组件', componentGenerator)
+  plop.setGenerator('创建页面', pageGenerator)
+}
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### 1.3 `generator`目录结构
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+├ generators    // 生成器
+  ├─component   // 创建组件相关
+  ├─utils       // 工具函数
+  ├─page        // 创建页面相关
+  └─index.js    // 入口文件
+```
+**创建页面相关**
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
