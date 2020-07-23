@@ -1,7 +1,7 @@
 <!--
  * @Author: yqj
  * @Date: 2020-07-22 20:33:15
- * @LastEditTime: 2020-07-23 14:14:43
+ * @LastEditTime: 2020-07-23 17:19:17
  * @Description: 
 --> 
 
@@ -72,5 +72,10 @@ module.exports = (plop)=>{
 ```
 **创建页面相关**
 
+首先看下效果图：
+
+![](https://user-gold-cdn.xitu.io/2020/7/23/1737af490c62a298?w=1305&h=683&f=gif&s=837643)
+
+pages 页面
 
 
