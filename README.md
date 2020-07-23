@@ -157,18 +157,23 @@ module.exports = (plop)=>{
 prompts和actions解读:
 
 1.  请输入 `page` 文件夹名称! 
+
     在询问中，添加了重名验证，输入不对会有相关提示， 输入的名称保存至`dir`变量中。
 
 2.  是否创建scss文件?
+
     用户选择创建scss文件，选择结果是`Boolean`保存在`hasScss`变量中。
 
 3.  是否导入api?
+
     同2。作用：顶部是否导入封装好的Api（benApi没有做封装）。
 
 4.  是否增加link?
+
     同2。作用：导航中是否现实。
 
 5.  是否创建components文件夹?
+
     同2。作用：页面是否生成components文件夹。
     
 创建页面配置代码    
@@ -330,3 +335,9 @@ export default {{ properCase dir }};
 [Inquirer](https://github.com/SBoudrias/Inquirer.js)
 [handlebar](https://handlebarsjs.com/zh/guide/)
 [前端工程化之plop的使用](https://blog.csdn.net/u012733501/article/details/106858603)
+
+
+
+
+
+
