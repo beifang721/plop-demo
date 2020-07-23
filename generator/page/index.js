@@ -1,7 +1,7 @@
 /*
  * @Author: yqj
  * @Date: 2020-07-23 11:01:41
- * @LastEditTime: 2020-07-23 13:40:08
+ * @LastEditTime: 2020-07-23 18:44:30
  * @Description: 
  */ 
 
@@ -37,7 +37,7 @@ module.exports = {
      type: 'confirm',
      name: 'hasLink',
      default: true,
-     message: '是增加link?'
+     message: '是否增加link?'
    },
    {
      type: 'confirm',
