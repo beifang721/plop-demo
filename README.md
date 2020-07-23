@@ -1,7 +1,7 @@
 <!--
  * @Author: yqj
  * @Date: 2020-07-22 20:33:15
- * @LastEditTime: 2020-07-23 21:16:15
+ * @LastEditTime: 2020-07-23 21:31:34
  * @Description: 
 --> 
 
@@ -147,102 +147,10 @@ module.exports = (plop)=>{
 
   先了解目录配置，以便明白下面命令交互
   ![目录](https://user-gold-cdn.xitu.io/2020/7/23/1737b37e3fd8f3b0?w=788&h=870&f=jpeg&s=61326)
+  
   顶部的`gif`，就是`Plop`创建页面的效果图!!!
 
   **`index.js入口文件`** 
-  ```
-  // 验证组件是否已经存在
-  const componentExist = require('../utils/index.js');
-
-module.exports = {
- description: '创建page页面',
- prompts:[
-   {
-     type: 'input',
-     name: 'dir',
-     message: '请输入 page 文件夹名称!',
-     validate: value => {
-       if ((/.+/).test(value)) {
-         return componentExist(value) ? '组件名 或 page名已经存在' : true
-       }
-       return '请输入page 文件夹名称'
-     }
-   },
-   {
-     type: 'confirm',
-     name: 'hasScss',
-     default: true,
-     message: '是否创建scss文件?'
-   },
-   {
-     type: 'confirm',
-     name: 'hasApi',
-     default: true,
-     message: '是否导入api?'
-   },
-   {
-     type: 'confirm',
-     name: 'hasLink',
-     default: true,
-     message: '是增加link?'
-   },
-   {
-     type: 'confirm',
-     name: 'hasComponents',
-     default: true,
-     message: '是否创建components文件夹?'
-   },
- ],
- actions: (data)=>{
-   const { dir, hasScss, hasApi, hasComponents, hasLink } = data;
-   const actions = [];
-   
-   actions.push({
-     type:'add',
-     path: './src/pages/{{properCase dir}}/index.js',
-     templateFile: 'generator/page/page.hbs'
-   })
-
-   if(hasScss) {
-     actions.push({
-       type:'add',
-       path: './src/pages/{{properCase dir}}/index.scss',
-       templateFile: 'generator/page/page.scss.hbs'
-     })
-   }
-
-   if(hasComponents){
-     actions.push({
-       type:'add',
-       path: './src/pages/{{properCase dir}}/components/.gitkeep',
-     })
-   }
-   
-   // routes.js文件 增加路由
-   actions.push({
-      type:'append',
-      pattern: /(?=(const))/,  //匹配 const在前面插入
-      path: './src/router/routes.js',
-      template: 'import {{ properCase dir }} from "../pages/{{properCase dir}}";\n'
-   })
-   
-   actions.push({
-     type:'append',
-     pattern: /(?=(\]))/, //匹配 ] 在前面插入
-     path: './src/router/routes.js',
-     templateFile: 'generator/page/router.hbs'
-   })
-
-   return actions;
- }
-}
-```
-其中 `properCase` 将 `dir` 转为大驼峰的格式，常用的关键词：
-  -  `camelCase`：changeFormatToThis 小驼峰
-  -  `properCase`：ChangeFormatToThis 大驼峰
-  -  `snakeCase`: change_format_to_this 下划线分割
-
-更多请参考相关[文档](https://github.com/plopjs/plop#case-modifiers)
 
 该配置毕竟复杂，一步一步的分析也是很容易理解的。
 
@@ -262,6 +170,101 @@ prompts和actions解读:
 
 5.  是否创建components文件夹?
     同2。作用：页面是否生成components文件夹。
+    
+创建页面配置代码    
+```
+ // generator/page/index.js
+  // 验证组件是否已经存在
+  const componentExist = require('../utils/index.js');
+  module.exports = {
+  description: '创建page页面',
+  prompts:[
+    {
+      type: 'input',
+      name: 'dir',
+      message: '请输入 page 文件夹名称!',
+      validate: value => {
+        if ((/.+/).test(value)) {
+          return componentExist(value) ? '组件名 或 page名已经存在' : true
+        }
+        return '请输入page 文件夹名称'
+      }
+    },
+    {
+      type: 'confirm',
+      name: 'hasScss',
+      default: true,
+      message: '是否创建scss文件?'
+    },
+    {
+      type: 'confirm',
+      name: 'hasApi',
+      default: true,
+      message: '是否导入api?'
+    },
+    {
+      type: 'confirm',
+      name: 'hasLink',
+      default: true,
+      message: '是增加link?'
+    },
+    {
+      type: 'confirm',
+      name: 'hasComponents',
+      default: true,
+      message: '是否创建components文件夹?'
+    },
+  ],
+  actions: (data)=>{
+    const { dir, hasScss, hasApi, hasComponents, hasLink } = data;
+    const actions = [];
+    
+    actions.push({
+      type:'add',
+      path: './src/pages/{{properCase dir}}/index.js',
+      templateFile: 'generator/page/page.hbs'
+    })
+
+    if(hasScss) {
+      actions.push({
+        type:'add',
+        path: './src/pages/{{properCase dir}}/index.scss',
+        templateFile: 'generator/page/page.scss.hbs'
+      })
+    }
+
+    if(hasComponents){
+      actions.push({
+        type:'add',
+        path: './src/pages/{{properCase dir}}/components/.gitkeep',
+      })
+    }
+    
+    // routes.js文件 增加路由
+    actions.push({
+        type:'append',
+        pattern: /(?=(const))/,  //匹配 const在前面插入
+        path: './src/router/routes.js',
+        template: 'import {{ properCase dir }} from "../pages/{{properCase dir}}";\n'
+    })
+    
+    actions.push({
+      type:'append',
+      pattern: /(?=(\]))/, //匹配 ] 在前面插入
+      path: './src/router/routes.js',
+      templateFile: 'generator/page/router.hbs'
+    })
+    return actions;
+  }
+}
+```
+
+其中 `properCase` 将 `dir` 转为大驼峰的格式，常用的关键词：
+  -  `camelCase`：changeFormatToThis 小驼峰
+  -  `properCase`：ChangeFormatToThis 大驼峰
+  -  `snakeCase`: change_format_to_this 下划线分割
+
+更多请参考相关[文档](https://github.com/plopjs/plop#case-modifiers)    
     
 **模版文件**
 
@@ -327,14 +330,3 @@ export default {{ properCase dir }};
 [Inquirer](https://github.com/SBoudrias/Inquirer.js)
 [handlebar](https://handlebarsjs.com/zh/guide/)
 [前端工程化之plop的使用](https://blog.csdn.net/u012733501/article/details/106858603)
-
-
-
-
-
-
-
-
-
- 
-
