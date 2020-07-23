@@ -143,18 +143,19 @@ module.exports = (plop)=>{
 ```
 
 
-**page 创建页面的相关配置**
+**page 创建页面的相关配置:**
 
   先了解目录配置，以便明白下面命令交互
-  ![目录](https://user-gold-cdn.xitu.io/2020/7/23/1737b37e3fd8f3b0?w=788&h=870&f=jpeg&s=61326)
+
+  <img width=400 src='https://user-gold-cdn.xitu.io/2020/7/23/1737b37e3fd8f3b0?w=788&h=870&f=jpeg&s=61326'/>
   
   顶部的`gif`，就是`Plop`创建页面的效果图!!!
 
-  **`index.js入口文件`** 
+  **`index.js`入口文件:** 
 
 该配置毕竟复杂，一步一步的分析也是很容易理解的。
 
-prompts和actions解读:
+根据每个问题(message)解读prompts和actions:
 
 1.  请输入 `page` 文件夹名称! 
 
