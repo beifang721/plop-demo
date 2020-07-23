@@ -1,7 +1,7 @@
 <!--
  * @Author: yqj
  * @Date: 2020-07-22 20:33:15
- * @LastEditTime: 2020-07-23 21:08:09
+ * @LastEditTime: 2020-07-23 21:16:15
  * @Description: 
 --> 
 
@@ -319,6 +319,14 @@ export default {{ properCase dir }};
  ```
  完整的示例请参考[项目地址]()顺便求个star
 
+### 写在最后
+上述的只是作为一个简单的配置，实战中可以根据项目的特点制定模版，可以大大的提升开发效率。如果您看完后，觉得游泳池欢迎点赞，谢谢！！！
+
+参考：
+[Plop](https://plopjs.com/documentation/#using-prompts)
+[Inquirer](https://github.com/SBoudrias/Inquirer.js)
+[handlebar](https://handlebarsjs.com/zh/guide/)
+[前端工程化之plop的使用](https://blog.csdn.net/u012733501/article/details/106858603)
 
 
 
