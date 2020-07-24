@@ -1,7 +1,7 @@
 <!--
  * @Author: yqj
  * @Date: 2020-07-22 20:33:15
- * @LastEditTime: 2020-07-24 09:48:33
+ * @LastEditTime: 2020-07-24 10:06:14
  * @Description: 
 --> 
 
@@ -23,8 +23,11 @@ npm start
 
 ### Plop
 ---
-#### 1、 Plop基础说明
+#### 前言
+
 在开发中，我们经常复制粘贴，复制完又删除，每天重复的劳动，枯燥且无聊。在vscode中我们可以通过基本的配置快捷键生成代码片段。一些基础的是可以的，但在项目中还是难以满足，因此动态生成基本配置是尤为重要的。`Plop.js`脚手架可以更好的自定义配置，通过命令快速创建基础模版。
+
+#### 1、 Plop基础说明
 
 **安装**
 ```
@@ -76,6 +79,7 @@ plop 配置名称 输入参数
 module.exports = (plop)=>{}
 ```
 plop参数是一个对象，包含了`generator`的api，我主要用到的是`setGenerator`。
+
 `setGenerator(name, config)` name: 生成器的名字 config: 生成器配置信息
 
 ```
