@@ -1,7 +1,7 @@
 <!--
  * @Author: yqj
  * @Date: 2020-07-22 20:33:15
- * @LastEditTime: 2020-07-23 21:31:34
+ * @LastEditTime: 2020-07-24 09:48:33
  * @Description: 
 --> 
 
@@ -149,7 +149,7 @@ module.exports = (plop)=>{
 
   <img width=400 src='https://user-gold-cdn.xitu.io/2020/7/23/1737b37e3fd8f3b0?w=788&h=870&f=jpeg&s=61326'/>
   
-  顶部的`gif`，就是`Plop`创建页面的效果图!!!
+  顶部的`gif`，就是用`Plop`**生成页面**的效果图!!!
 
   **`index.js`入口文件:** 
 
@@ -177,7 +177,7 @@ module.exports = (plop)=>{
 
     同2。作用：页面是否生成components文件夹。
     
-创建页面配置代码    
+创建页面相关代码：   
 ```
  // generator/page/index.js
   // 验证组件是否已经存在
@@ -222,6 +222,7 @@ module.exports = (plop)=>{
     },
   ],
   actions: (data)=>{
+    // data就是上述问题数据，  name作为属性
     const { dir, hasScss, hasApi, hasComponents, hasLink } = data;
     const actions = [];
     
